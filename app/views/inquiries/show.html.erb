@@ -1,0 +1,27 @@
+<%= render 'layouts/top_nav_bar' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>ID:</b>
+  <%= @inquiry.id %>
+</p>
+
+<p>
+  <b>Created By:</b>
+  <% created_by = User.find(@inquiry.user_id) %>
+  <%= created_by.name %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @inquiry.subject %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @inquiry.message %>
+</p>
+
+<%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
+<%= link_to 'Back', inquiries_path %>

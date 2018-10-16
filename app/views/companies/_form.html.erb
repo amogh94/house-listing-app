@@ -1,0 +1,73 @@
+<%= form_for(@company) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Name</label><br />
+        <input type="text" value="<%= @company.name %>" name="company[name]" class="form-control input-sm" placeholder="Name">
+      </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Website</label><br />
+        <input type="url" value="<%= @company.website %>" name="company[website]" class="form-control input-sm" placeholder="Website">
+      </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Address</label><br />
+        <input type="text" value="<%= @company.address %>" name="company[address]" class="form-control input-sm" placeholder="Address">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Size</label>
+        <input type="number" min="1" value="<%= @company.address %>" name="company[size]" class="form-control input-sm" placeholder="Size">
+      </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Founded in the year</label><br />
+        <select class="form-control input-sm" name="company[founded]">
+          <option value="<%= select_year(Date.today, start_year: 1800, end_year: 2018) %>"></option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Revenue</label><br />
+        <input type="number" value="<%= @company.revenue %>" name="company[revenue]" class="form-control input-sm" placeholder="Revenue">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Synopsis</label><br />
+        <input type="textarea" value="<%= @company.synopsis %>" name="company[synopsis]" class="form-control input-sm" placeholder="Synopsis">
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" id="btn-fblogin" class="btn btn-primary">Create company</button>
+
+<% end %>

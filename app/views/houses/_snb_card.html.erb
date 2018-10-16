@@ -1,0 +1,33 @@
+<div class="col-md-9">
+  <div class="col-md-10 well well-sm snb_card" data-href="<%= get_house_url(house.id) %>">
+    <div class="col-md-10">
+      <h4><%= house.location %></h4>
+      <div class="col-md-3" style="background-color: #bce8f1;">
+        <img src="https://brand.ncsu.edu/img/2x1-brick.png" style="width: inherit;height: inherit;" class="img-rounded img-responsive">
+      </div>
+      <div class="col-md-6">
+        <p>
+          <span>Owner: <%= house.current_owner %></span><br>
+          <span><%= house.sq_footage %> sqft</span><br>
+          <span>Built in <%= house.year_build %></span><br/>
+          <span>Managed by <%= Company.find(house.company_id).name %></span><br>
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <% get_interests_inquiries_text(house.id,@loginStatus,@current_user) %>
+        <span class="badge badge-danger"><%= @interestText %></span>
+        <span class="badge badge-danger"><%= @inquiriesText %></span>
+      </div>
+    </div>
+    <div class="col-md-2" style="text-align:center;/* vertical-align: middle; */">
+      <br>
+      <div class="price mediafix">
+        <h3><span class="symbol">$ </span><%= get_formatted_price(house.list_price) %></h3>
+      </div>
+      <a href="/houses/<%= house.id %>">
+        <button class="btn btn-primary col-sm-12 col-md-12">More</button>
+      </a>
+    </div>
+  </div>
+</div>

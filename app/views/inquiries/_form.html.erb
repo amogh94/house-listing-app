@@ -1,0 +1,35 @@
+<%= form_for(@inquiry) do |f| %>
+  <% if @inquiry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inquiry.errors.count, "error") %> prohibited this inquiry from being saved:</h2>
+
+      <ul>
+      <% @inquiry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Provide a brief subject for your inquiry</label><br />
+        <input type="text" value="<%= @inquiry.subject %>" name="inquiry[subject]" class="form-control input-sm" placeholder="Subject">
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-4 col-sm-4 col-md-4">
+      <div class="form-group">
+        <label>Message</label><br />
+        <input type="text" value="<%= @inquiry.message %>" name="inquiry[message]" class="form-control input-sm" placeholder="Message">
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" id="btn-fblogin" class="btn btn-primary">Create Inquiry</button>
+
+<% end %>

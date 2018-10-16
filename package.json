@@ -1,0 +1,7 @@
+{
+  "name": "OODD_A2",
+  "private": true,
+  "dependencies": {
+    "owl.carousel": "^2.3.4"
+  }
+}

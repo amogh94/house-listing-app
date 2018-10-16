@@ -1,0 +1,60 @@
+
+
+<div class="col-xs-14 col-sm-8 col-md-8">
+  <div class="well well-sm">
+    <div class="row">
+      <div class="col-sm-6 col-md-4">
+        <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+      </div>
+      <div class="col-sm-6 col-md-8">
+        <div class="col-sm-6 col-md-8">
+          <h4><%= @company.name %></h4>
+        </div>
+        <div style="text-align: right" class="col-sm-4 col-md-4">
+          <p>Founded in <%= @company.founded %></p>
+        </div>
+        <p>
+          <label>
+            <cite><a href="<%= @company.website %>"><%= @company.website %></a><i class="glyphicon glyphicon-envelope"></i></cite>
+          </label>
+        </p>
+        <p>
+          <label>
+            <cite><%= @company.size %> agents work here<i class="glyphicon glyphicon-map-marker"> </i></cite>
+          </label>
+        </p>
+        <p>
+          <label>
+            <cite>Address : <%= @company.address %><i class="glyphicon glyphicon-map-marker"> </i></cite>
+          </label>
+        </p>
+        <p>
+          <label>
+            <cite>Synopsis : <%= @company.synopsis %></cite>
+          </label>
+        </p>
+        <p>
+          <label><i>Revenue : $ <%= get_formatted_price(@company.revenue) %></i> </label>
+        </p>
+        <% if @realtor_line %>
+        <div class="col-sm-4 col-md-8 navbar-dark navbar-expand-lg img-rounded" style="background-color:#bce8f1">
+          <p>
+            <h5><%= @realtor_line %></h5>
+          </p>
+        </div>
+        <% end %>
+        <% if @house_line %>
+        <div class="col-sm-4 col-md-8 navbar-dark navbar-expand-lg img-rounded" style="background-color:#bce8f1; margin-top:5px">
+          <p>
+          <h5><a href="<%= @house_link %>"><%= @house_line %></a></h5>
+          </p>
+        </div>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+

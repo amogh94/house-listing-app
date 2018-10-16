@@ -1,0 +1,17 @@
+<%= render 'layouts/top_nav_bar' %>
+
+<div class="container">
+  <div class="row">
+    <%= render 'house_page_card' %>
+    <% if !@current_user.nil? && @current_user.role!=1 %>
+      <%= render 'inquiries_form' %>
+    <% end %>
+    <%= render 'house_interests_v2' %>
+
+  </div>
+</div>
+
+<div style="display: none;">
+<span id="isViewingOwnHouse"><%= @viewing_own_house?"1":"0" %></span>
+<span id="houseId"><%= @house.id %></span>
+</div>

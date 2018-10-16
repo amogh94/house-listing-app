@@ -1,0 +1,21 @@
+<%= render 'layouts/top_nav_bar' %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b> ID:</b>
+  <%= @interest.id %>
+</p>
+
+<p>
+  <b> User:</b>
+  <%= @interest.user_id %>
+</p>
+
+<p>
+  <b> House ID:</b>
+  <%= @interest.house_id %>
+</p>
+
+<%= link_to 'Edit', edit_interest_path(@interest) %> |
+<%= link_to 'Back', interests_path %>

@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-14 col-sm-8 col-md-8">
+      <div class="well well-sm">
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <img src="http://placehold.it/380x500" alt="" class="img-rounded img-responsive" />
+          </div>
+          <div class="col-sm-6 col-md-8">
+            <div class="col-md-6">
+            <h3><strong><%= @display_user.name %></strong></h3>
+            </div>
+            <div class="col-md-6">
+              <div class="col-md-6">
+                <a href="<%= "/users/#{@display_user.id.to_i-1}" %>">
+                <h5>Prev User</h5>
+                </a>
+              </div>
+              <div class="col-md-6" style="text-align:right;">
+                <a href="<%= "/users/#{@display_user.id.to_i+1}" %>">
+                  <h5>Next User
+                  </h5>
+                </a>              </div>
+
+            </div>
+            <div class="col-md-12">
+              <p>
+                <cite>Active since <%= @user_active_time %><i class="glyphicon glyphicon-map-marker"></i></cite>
+              </p>
+              <p>
+                <h4>
+                  <%= @display_user.email %><i class="glyphicon glyphicon-envelope"></i>
+                </h4>
+                <% if (@display_user.phone) %>
+                  <h5><%= @display_user.phone %></h5>
+                <% end %>
+                <% if (@display_user.preferred_contact_method) %>
+                  <span style="display: block">Preferred Contact Method: <%= @display_user.preferred_contact_method.capitalize %></span>
+                <% end %>
+                <% if(!@roleText.nil?) %>
+                  <h5 style="display: block"><%= @roleText %></h5>
+                <% end %>
+                <% if(!@companyName.nil?) %>
+                  <h5 style="display: block"><%= @companyName %></h5>
+                <% end %>
+               </p>
+              <% if (@isAdmin && @display_user.role!=4) %>
+              <div class="col-md-12">
+                <a href="/users/<%= @display_user.id %>/edit">
+                <button class="btn btn-primary">Edit</button>
+                </a>
+
+              </div>
+              <br/>
+              <div class="col-md-12" >
+                <a href="javascript:void(0);" id="delete_user" data-uid="<%= @display_user.id %>" >
+                <button  class="btn btn-primary">Delete</button>
+                </a>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <% if(!@current_user.nil? && @display_user.id == @current_user.id) %>
+      <%= render 'users/my_links' %>
+    <% end %>
+  </div>
+</div>
+
+
+
+

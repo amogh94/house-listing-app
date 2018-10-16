@@ -1,0 +1,50 @@
+<div class="col-md-3" style="height:1000px">
+  <form id="house_filter" onsubmit="return false;">
+
+    <% @filters.each do |data|
+      heading = data[:heading]
+      input_name = data[:input_name]
+      is_multi_select = data[:is_multi_select]
+      if is_multi_select
+        options = data[:options]
+      end
+
+      is_range = data[:is_range]
+      if is_range
+        range = [data[:range][0],data[:range][1]]
+      end
+      alphabet = data[:url_alphabet]
+    %>
+    <div class="col-md-12">
+    <label><%= heading %></label>
+
+    <% if is_multi_select %>
+      <select data-alphabet="<%= alphabet %>" class="form-control" aria-hidden="true" aria-multiselectable="true" name="<%= input_name %>">
+        <option data-select2-id="3" value="-1" selected="selected">Select</option>
+        <% puts options %>
+        <% options.each do |option| %>
+          <option value="<%= option["value"] %>"><%= option["name"] %></option>
+        <% end %>
+      </select>
+        <br/>
+    <% end %>
+      <br/>
+
+    <%if is_range %>
+        <div class="col-md-3">
+          From: <input data-alphabet="<%= alphabet %>" name="<%= input_name %>_min" placeholder="(Min <%= range[0] %>)" type="number" min="<%= range[0].to_i %>"/>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+          To: <input name="<%= input_name %>_max" placeholder="(Max <%= range[1] %>)" type="number" max="<%= range[1].to_i %>"/>
+        </div>
+        <br/>
+    <% end %>
+    </div>
+    <%end %>
+    <div class="col-md-12">
+      <br/>
+      <button type="submit" class="btn btn-primary" id="apply_filter" style="width:100%">Apply</button>
+    </div>
+  </form>
+</div>

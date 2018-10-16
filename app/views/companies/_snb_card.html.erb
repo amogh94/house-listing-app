@@ -1,0 +1,23 @@
+<div class="col-md-6">
+  <div class="col-md-12 well well-sm">
+    <div class="col-md-12">
+      <h4><%= company.name %></h4>
+      <div class="col-md-3" style="background-color: #bce8f1;">
+        <img src="https://brand.ncsu.edu/img/2x1-brick.png" style="width: inherit;height: inherit;" class="img-rounded img-responsive">
+      </div>
+      <div class="col-md-6">
+        <p>
+          <span>Website : <a target="_blank" href="https://<%= company.website %>"><%= company.website %></a></span><br>
+          <span> Address : <%= company.address %></span><br>
+          <span> Founded in : <%= company.founded %></span><br/>
+
+        </p>
+      </div>
+      <div class="col-md-3" style="text-align:center;/* vertical-align: middle; */">
+        <a href="/companies/<%= company.id %>">
+          <button class="btn btn-primary col-sm-12 col-md-12">More</button>
+        </a>
+      </div>
+    </div>
+</div>
+</div>

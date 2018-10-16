@@ -1,0 +1,29 @@
+<% if @viewing_own_house #!@current_user.nil? && @house.company_id == @current_user.company_id %>
+<div class="col-xs-14 col-sm-4 col-md-4 well hide" id="inquiries_section">
+
+
+  <h5 class="col-md-6 inq_prev">Prev</h5>
+  <h5 class="col-md-6 inq_next" style="text-align: right">Next</h5>
+
+
+  <div class="well col-md-12" id="inquiry_template">
+    <h5 class="col-md-6">
+      <strong>UserName</strong>
+    </h5>
+    <h5 class="col-md-6 contact" style="text-align: right">contact</h5>
+    <br/>
+    <span>
+      <strong>Subject: <span class="subject">Topic Avery Roaches</span></strong>
+    </span>
+    <p>Unfortunately, Rails itself encourages this lack of structure and poor organization by including all helpers into every view by default, creating a polluted global namespace.</p>
+    <span class="reply">
+      <strong>Your Reply: </strong>
+      <span>You reply goes here</span>
+    </span>
+    <textarea class="reply_box" style="width: 100%" placeholder="Reply..."></textarea>
+    <div style="text-align: right">
+      <button class="btn btn-primary inquiry_reply reply_box" data-inquiryid="0">Reply</button>
+    </div>
+  </div>
+</div>
+<% end %>

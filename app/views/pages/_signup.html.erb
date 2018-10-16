@@ -1,0 +1,100 @@
+<div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <div class="panel-title">Sign Up</div>
+      <div style="float:right; font-size: 85%; position: relative; top:-10px">
+        <a id="signinlink" href="javascript:void(0)">Sign In</a>
+      </div>
+    </div>
+    <div class="panel-body" >
+        <%= form_for(:user, url: "/users") do |f| %>
+        <div id="signupalert" style="display:none" class="alert alert-danger">
+          <p>Error:</p>
+          <span></span>
+        </div>
+
+
+
+        <div class="form-group col-md-12">
+          <label for="email" class="col-md-3 control-label">Email</label>
+          <div class="col-md-9">
+            <input required="required" type="text" class="form-control" name="user[email]" placeholder="Email Address">
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="firstname" class="col-md-3 control-label">Name</label>
+          <div class="col-md-9">
+            <input required="required" type="text" class="form-control" name="user[name]" placeholder="Name">
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="phone" class="col-md-3 control-label">Phone</label>
+          <div class="col-md-9">
+            <input type="number" class="form-control" name="user[phone]" placeholder="Phone">
+          </div>
+        </div>
+
+        <div class="form-group col-md-12" id="role_signup">
+          <label for="company" class="col-md-3 control-label">Role</label>
+          <div class="col-md-9">
+            <select required="required" name="user[role]" title="role" class="form-control input-sm">
+              <option value="1" data-hide="true">I'm looking for a house</option>
+              <option value="2">I'm a realtor</option>
+              <option value="3">I'm a realtor and also looking for a house</option>
+              <% if !@admin_exists %>
+              <option value="4" data-hide="true">Admin</option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12" id="company_signup" style="display:none;">
+          <label for="company" class="col-md-3 control-label">Company</label>
+          <div class="col-md-9">
+            <select class="form-control" name="user[company_id]" title="company">
+              <% @companies.each do |company| %>
+                <option value="<%= company.id %>"><%=company.name %></option>
+              <% end %>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="preferred_contact_method" class="col-md-3 control-label">How do you like to be contacted?</label>
+
+          <div class="col-md-9">
+            <select class="form-control" name="user[preferred_contact_method]" title="preferred_contact_method">
+              <option value="email" data-hide="true">Email</option>
+              <option value="phone">Text</option>
+              <option value="phone">Phone</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="password" class="col-md-3 control-label">Password</label>
+          <div class="col-md-9">
+            <input required="required" type="password" class="form-control" name="user[password]" placeholder="Password">
+          </div>
+        </div>
+
+        <div class="form-group col-md-12">
+          <label for="password_digest" class="col-md-3 control-label">Confirm Password</label>
+          <div class="col-md-9">
+            <input required="required" type="password" class="form-control" name="user[password_confirmation]" placeholder="Confirm Password">
+          </div>
+        </div>
+
+        <div class="form-group col-md-12" style="text-align: center">
+          <button id="btn-signup" type="submit" class="btn btn-info" style="width: 80%"><i class="icon-hand-right"></i>Sign Up / Register</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+</div>

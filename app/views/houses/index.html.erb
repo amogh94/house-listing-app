@@ -1,0 +1,7 @@
+<%= render 'layouts/top_nav_bar' %>
+
+<%= render 'houses/filters' %>
+
+<% @houses.each do |house| %>
+  <%= render :partial => 'houses/snb_card', :locals => {:house => house} %>
+<% end %>

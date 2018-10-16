@@ -1,0 +1,60 @@
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="<%= @nav_bar_details["nameLink"] %>"><%= @nav_bar_details["name"].titleize %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <form class="form-inline my-2 my-lg-0" id="searchForm">
+      <input name="keyword" class="form-control mr-sm-2" type="text" value="<%= @nav_bar_details["searchKeyword"] %>" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav mr-auto">
+      <% counter = 1 %>
+      <% @nav_bar_details["links"].each do |link|
+        if !link[:link].nil?
+          noToggle = true
+        else
+          noToggle = false
+        end
+      %>
+        <li class="nav-item active dropdown show">
+          <% if noToggle %>
+            <a href="<%= link[:link] %>" id="dropdown<%= counter %>" class="nav-link">
+          <% else %>
+            <a href="javascript:void(0)" id="dropdown<%= counter %>" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <%end %>
+            <i class="fa fa-home"></i>
+            <%= link[:heading] %>
+            <span class="badge badge-danger"><%= link[:count] %></span>
+          </a>
+          <ul class="dropdown-menu " aria-labelledby="dropdown<%= counter %>">
+            <% link[:actions].each do |option| %>
+            <li class="dropdown-item"><a href="<%= option[:link] %>"><%= option[:title] %></a></li>
+            <% end %>
+          </ul>
+
+        </li>
+      <% counter+=1
+         end %>
+
+    </ul>
+
+    <ul class="navbar-nav">
+
+
+      <% if(@nav_bar_details["loggedIn"]) %>
+      <li class="nav-item active">
+        <a class="nav-link" href="/users/<%= @nav_bar_details["userid"] %>/edit">Edit My Profile</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" rel="nofollow" data-method="delete" href="/session/logout">Log out</a>
+      </li>
+      <% else %>
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Register / Sign Up</a>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

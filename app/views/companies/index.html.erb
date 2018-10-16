@@ -1,0 +1,6 @@
+<%= render 'layouts/top_nav_bar' %>
+
+
+<% @companies.each do |company| %>
+  <%= render :partial => 'companies/snb_card', :locals => {:company => company} %>
+<% end %>
